@@ -32,6 +32,47 @@
 #new_user{
   text-align: center;
 }
+#new_user input{
+  height: 30px;
+}
 .user-sign-in{
   text-align: center;
+	background-color: rgb(55, 58, 63);
+	color: #fff;
+	float: left;
+	margin-top: 3%;
+	width: 40%;
+}
+
+.user-sign-in legend{
+	color: #fff;
+	font-size: 25px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+.user-sign-in img{
+   margin-bottom: -33px;
+   margin-top: -20px;
+}
+.user-sign-in .or{
+  font-size: 18px !important;
+  font-weight: bold;
+}
+.bottom-legend{
+  padding: 0px !important;
+}
+.left-div{
+  float:left;
+}
+.usr-remember{
+	float: right;
+	position: relative;
+	right: 36%;
+	top: 9px;
+	width: 23%;
+}
+.google-image{
+
+	background: url("/assets/bootstrap-social.png") no-repeat 317px -276px;
 }
