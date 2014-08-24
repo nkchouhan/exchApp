@@ -1,0 +1,39 @@
+<h2>Orders</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Coin</th>
+      <th>Quantity</th>
+      <th>Date</th>
+      <th>Type</th>
+      <th>Bid</th>
+      <th>Ask</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_orders.each do |admin_order| %>
+      <tr>
+        <td><%= admin_order.status %></td>
+        <td><%= admin_order.coin %></td>
+        <td><%= admin_order.quantity %></td>
+        <td><%= admin_order.odr_date.strftime('%m/%d/%Y') %></td>
+        <td><%= admin_order.trsn_type %></td>
+        <td><%= admin_order.bid %></td>
+        <td><%= admin_order.ask %></td>
+        <td><%= link_to 'Show', admin_order_path(admin_order), :class => "btn btn-info" %></td>
+        <td><%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_admin_order_path(admin_order), :class => "btn btn-success" %></td>
+        <td><%= link_to '<i class="icon-trash"></i> Destroy'.html_safe, admin_order_path(admin_order), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '<i class="icon-plus"></i> New Order'.html_safe, new_admin_order_path, :class => "btn btn-primary" %>

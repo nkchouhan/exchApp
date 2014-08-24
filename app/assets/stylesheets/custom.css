@@ -1,0 +1,37 @@
+#coin_address{	
+	border: 1px solid #999;
+	color: green;
+	height: 45px;
+	line-height: 40px;
+	text-align: center;
+	width: 18%;
+}
+
+.slideshow {
+    background: url("/assets/dot.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    margin-top: 50px;
+}	
+.search-area {
+    height: 300px;
+    padding-top: 70px;
+    position: absolute;
+    top: 255px;
+    width: 100%;
+    z-index: 160;
+    
+}
+
+.search-area h1 {
+    color: orange;
+    font-family: Conv_Melbourne,Helvetica,sans-serif;
+    font-size: 55px;
+    line-height: 1.1;
+    margin-bottom: 0;
+    text-align: center;
+}
+#new_user{
+  text-align: center;
+}
+.user-sign-in{
+  text-align: center;
+}

@@ -1,0 +1,44 @@
+<%= form_for(@withdrawl) do |f| %>
+  <fieldset>
+    <legend><%= @withdrawl.new_record? ? "New Withdrawl" : "Edit Withdrawl"%></legend>
+		<% if @withdrawl.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@withdrawl.errors.count, "error") %> prohibited this withdrawl from being saved:</h2>
+
+				<ul>
+				<% @withdrawl.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<div class="control-group">
+			<%= f.label :account_number, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :account_number, :class => "input-xlarge" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :coin, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :coin, :class => "input-xlarge" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :coin_address, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :coin_address, :class => "input-xlarge" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :pin, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :pin, :class => "input-xlarge" %>
+			</div>
+		</div>
+		<div class="form-actions">
+			<%= f.submit :class => "btn btn-primary" %>
+		</div>
+	</fieldset>
+<% end %>

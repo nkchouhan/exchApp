@@ -1,0 +1,10 @@
+<html>
+  <body>
+    <p>Hi <%= @admin.try(:first_name).to_s.capitalize %>:</p>
+    
+    
+    <p><%= @withdrawl.user.try(:first_name).to_s.capitalize %> has deposit coin <%= @coin %></p>
+
+  </body>
+</html>
+

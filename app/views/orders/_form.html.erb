@@ -1,0 +1,50 @@
+<%= form_for [:admin, @admin_order] do |f| %>
+  <% if @admin_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_order.errors.count, "error") %> prohibited this admin_order from being saved:</h2>
+
+      <ul>
+      <% @admin_order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :user_id %>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :trsn_type %><br>
+    <%= f.text_field :trsn_type %>
+  </div>
+  <div class="field">
+    <%= f.label :coin %><br>
+    <%= f.text_field :coin %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.text_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :odr_date %><br>
+    <%= f.text_field :odr_date, :placeholder => "dd/mm/yyyy", :class => 'datepicker' %>
+  </div>
+  <div class="field">
+    <%= f.label :bid %><br>
+    <%= f.text_field :bid %>
+  </div>
+    <div class="field">
+    <%= f.label :ask %><br>
+    <%= f.text_field :ask %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+ <script>
+$(function() {
+$( ".datepicker" ).datepicker({dateFormat: "dd/mm/yy"});
+});
+</script>

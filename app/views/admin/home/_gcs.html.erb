@@ -1,0 +1,93 @@
+<h2><%= coin_type.present? ? coin_type.upcase  : "COMMUNITY" %></h2>
+<div>
+	<div id='<%= coin_type%>_chart' style='width: 700px; height: 240px; '></div>
+</div>
+<br/>
+<br/>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Bid</th>
+      <th>Ask</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Last</th>
+      <th>Vol</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if coin_type.present? %>
+			<% if coin_type == "gcs"%>
+				<% admin_stats_bars = @admin_stats_bars.gcs%>
+			<% elsif coin_type == "btc"%>
+				<% admin_stats_bars = @admin_stats_bars.btc%>
+			<% elsif coin_type == "ltc"%>
+				<% admin_stats_bars = @admin_stats_bars.ltc%>
+			<% elsif coin_type == "doge"%>
+				<% admin_stats_bars = @admin_stats_bars.doge%>
+			<% end %>
+    <% else %>
+      <% admin_stats_bars = @admin_stats_bars %>
+    <% end%>
+    <% admin_stats_bars.to_a.each do |admin_stats_bar| %>
+      <tr>
+        <td><%= admin_stats_bar.coin %></td>
+        <td><%= admin_stats_bar.bid %></td>
+        <td><%= admin_stats_bar.ask %></td>
+        <td><%= admin_stats_bar.high %></td>
+        <td><%= admin_stats_bar.low %></td>
+        <td><%= admin_stats_bar.last %></td>
+        <td><%= admin_stats_bar.vol %></td>
+        <td><%= link_to 'Show', admin_stats_bar_path(admin_stats_bar), :class => "btn btn-info" %></td>
+        <td><%= link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_admin_stats_bar_path(admin_stats_bar), :class => "btn btn-success" %></td>
+        <td><%= link_to '<i class="icon-trash"></i> Destroy'.html_safe, admin_stats_bar_path(admin_stats_bar), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '<i class="icon-plus"></i> New Stats bar'.html_safe, new_admin_stats_bar_path, :class => "btn btn-primary" %>
+
+<br /> <br /> 
+
+<script type='text/javascript' src='http://www.google.com/jsapi'></script>
+<script type='text/javascript'>
+	google.load('visualization', '1', {'packages':['annotatedtimeline']});
+	google.setOnLoadCallback(drawChart);
+	function drawChart() {
+		var data = new google.visualization.DataTable();
+		data.addColumn('datetime', 'Date');
+		data.addColumn('number', 'Last');
+		data.addColumn('number', 'Vol');
+		data.addRows([
+			<% if coin_type.blank? %>
+				<% @admin_stats_bars.each_with_index do |asb, index|%>
+					<% if index == @admin_stats_bars.count - 1 %>
+						[new Date(<%= asb.created_at.strftime("%Y, %m, %d, %H, %M, %S") %>), <%= asb.last.to_i %>, <%= asb.vol.to_i %>]
+					<% else %>
+					[new Date(<%= asb.created_at.strftime("%Y, %m, %d, %H, %M, %S") %>), <%= asb.last.to_i %>, <%= asb.vol.to_i %>],
+					<% end %>
+				<% end %>
+			<% else %>
+			  <% admin_stats_bars.each_with_index do |asb, index|%>
+					<% if index == @admin_stats_bars.count - 1 %>
+						[new Date(<%= asb.created_at.strftime("%Y, %m, %d, %H, %M, %S") %>), <%= asb.last.to_i %>, <%= asb.vol.to_i %>]
+					<% else %>
+					[new Date(<%= asb.created_at.strftime("%Y, %m, %d, %H, %M, %S") %>), <%= asb.last.to_i %>, <%= asb.vol.to_i %>],
+					<% end %>
+			 <% end %>
+		 <% end %>
+		]);
+
+		var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('<%= coin_type%>_chart'));
+		chart.draw(data, {displayAnnotations: true});
+	}
+</script>

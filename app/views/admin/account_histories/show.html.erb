@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ac date:</strong>
+  <%= @admin_account_history.ac_date.strftime('%m/%d/%Y') %>
+</p>
+
+<p>
+  <strong>Btc:</strong>
+  <%= @admin_account_history.btc %>
+</p>
+
+<p>
+  <strong>Doge:</strong>
+  <%= @admin_account_history.doge %>
+</p>
+
+<p>
+  <strong>Gcs:</strong>
+  <%= @admin_account_history.gcs %>
+</p>
+
+<p>
+  <strong>Ltc:</strong>
+  <%= @admin_account_history.ltc %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @admin_account_history.details %>
+</p>
+
+<%= link_to 'Edit', edit_admin_account_history_path(@admin_account_history) %> |
+<%= link_to 'Back', admin_account_histories_path %>

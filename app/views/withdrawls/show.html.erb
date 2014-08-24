@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Account number:</strong>
+  <%= @withdrawl.account_number %>
+</p>
+
+<p>
+  <strong>Coin:</strong>
+  <%= @withdrawl.coin %>
+</p>
+
+<p>
+  <strong>Coin address:</strong>
+  <%= @withdrawl.coin_address %>
+</p>
+
+<p>
+  <strong>Pin:</strong>
+  <%= @withdrawl.pin %>
+</p>
+
+<%= link_to 'Edit', edit_withdrawl_path(@withdrawl) %> |
+<%= link_to 'Back', withdrawls_path %>

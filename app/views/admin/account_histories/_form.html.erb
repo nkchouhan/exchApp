@@ -1,0 +1,63 @@
+<%= form_for [:admin, @admin_account_history], :html => {:class => "form-horizontal"} do |f| %>
+  <fieldset>
+    <legend><%= @admin_account_history.new_record? ? "Make New Account History" : "Edit Account History"%></legend>
+		<% if @admin_account_history.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@admin_account_history.errors.count, "error") %> prohibited this admin_account_history from being saved:</h2>
+
+				<ul>
+				<% @admin_account_history.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+				</ul>
+			</div>
+		<% end %>
+    <%= f.hidden_field :user_id %>
+		<div class="control-group">
+			<%= f.label :ac_date, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :ac_date, :class => "input-xlarge datepicker", :placeholder => "dd/mm/yyyy" %>
+			</div>
+		</div>
+				
+		<div class="control-group">
+			<%= f.label :btc, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :btc, :class => "input-xlarge" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :doge, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :doge, :class => "input-xlarge" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :gcs, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :gcs, :class => "input-xlarge" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :ltc, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :ltc, :class => "input-xlarge" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :details, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :details, :class => "input-xlarge" %>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<%= f.submit :class => "btn btn-primary" %>
+		</div>
+	</fieldset>
+<% end %>
+<script>
+	$(function() {
+		$( ".datepicker" ).datepicker({dateFormat: "dd/mm/yy"});
+	});
+</script>

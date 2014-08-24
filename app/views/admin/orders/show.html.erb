@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @admin_order.status %>
+</p>
+
+<p>
+  <strong>Coin:</strong>
+  <%= @admin_order.coin %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @admin_order.quantity %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @admin_order.odr_date.strftime('%m/%d/%Y') %>
+</p>
+
+<p>
+  <strong>Bid/Ask:</strong>
+  <%= @admin_order.bid_ask %>
+</p>
+
+<%= link_to 'Edit', edit_admin_order_path(@admin_order) %> |
+<%= link_to 'Back', admin_orders_path %>

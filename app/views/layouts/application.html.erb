@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ExchApp</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+<% flash.each do |name, msg| %>
+   <% if msg.is_a?(String) %>
+     <% alert_cls = (name == 'notice') ? "success" : ((name == 'alert' || name == "error") ? 'danger' : name) %>
+		 <div class= "alert alert-#{alert_cls}">
+				<a class="close" data-dismiss= "alert">×</a>
+				<%= content_tag :div, msg, :id => "flash_#{name}" %>
+		 </div>
+	<% end %>	
+<% end %>	
+<% if user_signed_in? %>
+  <li style="float:right; list-style-type: none; margin-top: 20px;">
+		<% if current_user.has_role? :admin %>
+		  <% unless request.url == admin_home_dashboard_url %>
+        <%= link_to('Dashboard', 'javascript:void(0);', :class => "btn btn-info", :id=>"admin_dashboard") %>
+      <% end %>
+    <% else %>
+      <% unless request.url == home_dashboard_url %>
+        <%= link_to('Dashboard', 'javascript:void(0);', :class => "btn btn-info", :id=>"dashboard") %>
+      <% end %>
+    <% end %> 
+		<div class="btn-group">
+			<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+				<i class="icon-user icon-white"></i>  <%= current_user.first_name.capitalize %>
+			<span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li><%= link_to('Profile', edit_user_registration_path) %></li>
+				<li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+			</ul>
+		</div>     
+  </li>
+<% else %>
+  <li style="float:right; list-style-type: none; margin-top: 20px;">
+		<% unless request.url == new_user_session_url %>
+      <%= link_to('Login', new_user_session_path, :class => "btn btn-success")  %>
+    <% end %>
+    <% unless request.url == new_user_registration_url %>
+      <%= link_to('Register', new_user_registration_path, :class => "btn btn-primary")  %>
+    <% end %> 
+  </li>
+<% end %>
+<br />
+<%= yield %>
+</div>
+<script>
+	$(document).ready(function(){
+		$(document).on('click', '.close .alert', function(){
+			$(this).parent().fadeOut(2000);
+		});
+	});
+	$(document).on('click', '#admin_dashboard', function(){
+		window.location.href =  '/admin/home/dashboard';
+	});
+	$(document).on('click', '#dashboard', function(){
+		window.location.href =  '/home/dashboard';
+	});
+	 
+</script>
+</body>
+</html>

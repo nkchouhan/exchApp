@@ -1,0 +1,51 @@
+<div class="slideshow"></div>
+
+<div class="search-area">
+  <div class="page-container page-container-fixed">
+    <span id="enter_location_error_message" style="display:none"></span>
+  </div>
+</div>
+
+<div style="display:none;">
+  <img src="/assets/slides/S1.jpg">
+  <img src="/assets/slides/S2.jpg">
+  <img src="/assets/slides/S3.jpg">
+  <img src="/assets/slides/S4.jpg">
+  <img src="/assets/slides/S5.jpg">
+</div>
+<script>
+  var images=new Array('/assets/slides/S1.jpg','/assets/slides/S2.jpg','/assets/slides/S3.jpg','/assets/slides/S4.jpg','/assets/slides/S5.jpg');
+  var nextimage=0;
+  var texts = new Array('<span>Your Coin, Easy To Buy & Sell</span>','Deposit Coin, Get Coin Address','<span>Withdrawl Coin, With Your  Choice </span>','<span>Your Bid.  Your Way.</span>','<span>Your Coin Chart. Showing Every time.</span>');
+  var nexttext=0;
+  doSlideshow();
+  doSlidetext();
+  
+  function doSlideshow(){
+    if($('.slideshowimage').length!=0){
+      $('.slideshowimage').fadeOut(200,function(){slideshowFadeIn();$(this).remove()});
+    }else{
+      slideshowFadeIn();
+    }
+  }
+  
+  function doSlidetext(){
+    if($('.text-special').length!=0){
+      $('.text-special').fadeOut(200,function(){slidetextFadeIn();$(this).remove()});
+    }else{
+      slidetextFadeIn();
+    }
+  }
+  
+  function slideshowFadeIn(){
+    $('.slideshow').prepend($('<img class="slideshowimage" src="'+images[nextimage++]+'" style="display:none">').fadeIn(1000,function(){setTimeout(doSlideshow,5000);}));
+    if(nextimage>=images.length)
+      nextimage=0;
+  }  
+   
+  function slidetextFadeIn(){   
+    $('.search-area').prepend($('<h1 class="text-special">'+texts[nexttext++]+'</h1>').fadeIn(1000,function(){setTimeout(doSlidetext,5000);}));
+    if(nexttext>=texts.length)
+      nexttext=0;
+  }
+</script>

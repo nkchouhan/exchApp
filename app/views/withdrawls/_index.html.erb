@@ -1,0 +1,34 @@
+
+<h2>Withdrawls Details</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Account number</th>
+      <th>Coin</th>
+      <th>Coin address</th>
+      <th>Pin</th>
+      <!--th></th-->
+      <!--th></th>
+      <th></th-->
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @withdrawls.each do |withdrawl| %>
+      <tr>
+        <td><%= withdrawl.account_number %></td>
+        <td><%= withdrawl.coin %></td>
+        <td><%= withdrawl.coin_address %></td>
+        <td><%= withdrawl.pin %></td>
+        <!--td><%#= link_to 'Show', withdrawl, :class => "btn btn-info" %></td-->
+        <!--td><%#= link_to 'Edit', edit_withdrawl_path(withdrawl) %></td>
+        <td><%#= link_to 'Destroy', withdrawl, method: :delete, data: { confirm: 'Are you sure?' } %></td-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '<i class="icon-plus"></i> New Withdrawl'.html_safe, new_withdrawl_path, :class => "btn btn-primary" %>

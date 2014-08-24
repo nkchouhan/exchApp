@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Coin:</strong>
+  <%= @admin_stats_bar.coin %>
+</p>
+
+<p>
+  <strong>Bid:</strong>
+  <%= @admin_stats_bar.bid %>
+</p>
+
+<p>
+  <strong>Ask:</strong>
+  <%= @admin_stats_bar.ask %>
+</p>
+
+<p>
+  <strong>High:</strong>
+  <%= @admin_stats_bar.high %>
+</p>
+<p>
+  <strong>Low:</strong>
+  <%= @admin_stats_bar.low %>
+</p>
+
+<p>
+  <strong>Last:</strong>
+  <%= @admin_stats_bar.last %>
+</p>
+
+<p>
+  <strong>Vol:</strong>
+  <%= @admin_stats_bar.vol %>
+</p>
+
+<%= link_to 'Edit', edit_admin_stats_bar_path(@admin_stats_bar), :class => 'btn btn-success' %>
+<%= link_to 'Back', admin_stats_bars_path, :class => 'btn btn-info' %>

@@ -1,0 +1,9 @@
+<html>
+  <body>
+    <p>Hi <%= @withdrawl.user.try(:first_name).to_s.capitalize %>:</p>
+    
+    
+    <p>For confirming withdrawl: <%= link_to 'Click HERE', confirm_withdrawl_url(:id => @withdrawl, :wdl_token => @withdrawl.confirmed_token) %></p>
+
+  </body>
+</html>

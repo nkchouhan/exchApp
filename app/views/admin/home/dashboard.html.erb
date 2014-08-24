@@ -1,0 +1,59 @@
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#tab1" data-toggle="tab">Community</a></li>
+		<li><a href="#tab2" data-toggle="tab">All Orders</a></li>
+		<li><a href="#tab3" data-toggle="tab">Account History</a></li>
+		<li><a href="#tab4" data-toggle="tab">Clients</a></li>
+	</ul>
+	<div class="tab-content first">
+		<div class="tab-pane active" id="tab1">
+			<ul class="nav nav-tabs">
+				<li class="btc active" data-id="tab11"><a href="#tab11" data-toggle="tab">BTC</a></li>
+				<li class="ltc"  data-id="tab12"><a href="#tab12" data-toggle="tab">LTC</a></li>
+				<li class="doge"  data-id="tab13"><a href="#tab13" data-toggle="tab">DOGE</a></li>
+				<li class="gcs"  data-id="tab14" ><a href="#tab14" data-toggle="tab">GCS</a></li>
+			</ul>
+			<div class="tab-content second">
+				<div class="tab-pane active" id="tab11">
+					 <p><%= render :partial => 'admin/stats_bars/index', :locals => {:coin_type => "btc"} %></p>
+				</div>
+				<div class="tab-pane active" id="tab12">
+					 <p><%= render :partial => 'admin/stats_bars/index', :locals => {:coin_type => "ltc"} %></p>
+				</div>
+				<div class="tab-pane active" id="tab13">
+					 <p><%= render :partial => 'admin/stats_bars/index', :locals => {:coin_type => "doge"} %></p>
+				</div>
+				<div class="tab-pane active" id="tab14">
+					 <p><%= render :partial => 'admin/stats_bars/index', :locals => {:coin_type => "gcs"} %></p>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane" id="tab2">
+			<p><%= render 'admin/orders/index' %></p>
+		</div>
+		<div class="tab-pane" id="tab3">
+			<p><%= render 'admin/account_histories/index' %></p>
+		</div>
+		<div class="tab-pane" id="tab4">
+			<p><%= render 'admin/users/index' %></p>
+		</div>
+	</div>
+</div>
+
+
+
+<script type='text/javascript'>
+	$(document).ready(function(){
+    $('.second .tab-pane').each(function () {
+        $(this).css('visibility', 'hidden');
+    });
+    
+    $('#tab11').css('visibility', 'visible');
+    
+    $(document).on('click', '.first li', function(){
+			 var id = $(this).attr('data-id');
+			 $('#'+id).css('visibility', '');
+		});
+	});
+</script>
+

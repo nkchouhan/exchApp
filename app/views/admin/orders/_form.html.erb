@@ -1,0 +1,69 @@
+<%= form_for [:admin, @admin_order], :html => {:class => "form-horizontal"} do |f| %>
+  <fieldset>
+    <legend><%= @admin_order.new_record? ? "Make New Order" : "Edit Existing Order"%></legend>
+		<% if @admin_order.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@admin_order.errors.count, "error") %> prohibited this admin_order from being saved:</h2>
+
+				<ul>
+				<% @admin_order.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<%= f.hidden_field :user_id %>
+		<div class="control-group">
+			<%= f.label :status, :class => "control-label" %>
+			<div class="controls">
+				<%= f.select(:status, ORDER_STATUS, {}, { :class => 'form-control input-xlarge', :style => "width: 284px;" }) %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :trsn_type, :class => "control-label" %>
+			<div class="controls">
+				<%= f.select(:trsn_type, ORDER_TYPE, {}, { :class => 'form-control input-xlarge', :style => "width: 284px;" }) %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :coin, :class => "control-label" %>
+			<div class="controls">
+				<%= f.select(:coin, COIN, {}, { :class => 'form-control input-xlarge', :style => "width: 284px;" }) %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :quantity, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :quantity, :class => "input-xlarge" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :odr_date, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :odr_date, :class => "input-xlarge datepicker", :placeholder => "dd/mm/yyyy" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :bid, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :bid, :class => "input-xlarge" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :ask, :class => "control-label" %>
+			<div class="controls">
+				<%= f.text_field :ask, :class => "input-xlarge" %>
+			</div>
+		</div>
+		
+		<div class="form-actions">
+			<%= f.submit :class => "btn btn-primary" %>
+		</div>
+	</fieldset>
+  
+<% end %>
+ <script>
+$(function() {
+$( ".datepicker" ).datepicker({dateFormat: "dd/mm/yy"});
+});
+</script>
