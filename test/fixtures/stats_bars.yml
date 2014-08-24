@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  coin: MyString
+  bid: 1.5
+  ask: 1.5
+  high: 1.5
+  vol: 1.5
+  last: 1.5
+  low: 1.5
+
+two:
+  coin: MyString
+  bid: 1.5
+  ask: 1.5
+  high: 1.5
+  vol: 1.5
+  last: 1.5
+  low: 1.5

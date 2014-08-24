@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_number: MyString
+  pin: MyString
+  coin_address: MyString
+  coin: MyString
+
+two:
+  account_number: MyString
+  pin: MyString
+  coin_address: MyString
+  coin: MyString

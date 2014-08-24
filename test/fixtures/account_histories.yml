@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ac_date: 2014-08-11 23:24:16
+  btc: 1.5
+  doge: 1.5
+  gcs: 1.5
+  ltc: 1.5
+  details: MyString
+
+two:
+  ac_date: 2014-08-11 23:24:16
+  btc: 1.5
+  doge: 1.5
+  gcs: 1.5
+  ltc: 1.5
+  details: MyString

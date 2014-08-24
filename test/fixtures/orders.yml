@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  type: 
+  coin: MyString
+  quantity: 1.5
+  date: 2014-08-11 23:20:57
+  bid_ask: 1.5
+
+two:
+  status: MyString
+  type: 
+  coin: MyString
+  quantity: 1.5
+  date: 2014-08-11 23:20:57
+  bid_ask: 1.5
