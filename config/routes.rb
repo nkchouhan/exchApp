@@ -68,6 +68,8 @@ ExchApp::Application.routes.draw do
     get 'home/ltc' => 'home#ltc'
     get 'home/doge' => 'home#doge'
     get 'home/gcs' => 'home#gcs'
+    get 'home/role_type' => 'home#role_type'
+    get 'home/assign_role' => 'home#assign_role'
   end
   
 end

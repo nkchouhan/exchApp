@@ -76,3 +76,22 @@
 
 	background: url("/assets/bootstrap-social.png") no-repeat 317px -276px;
 }
+
+
+.left-div-role {
+    border: 1px solid #B1AFAE;
+    margin-right: 5%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+
+.left-div-role a{
+ margin-left: 18px;
+ margin-bottom: 25px;
+}
+.left-div-role a:last-child{
+ width: 195px;
+}
+.left-div-role legend{
+ text-align: center;
+}

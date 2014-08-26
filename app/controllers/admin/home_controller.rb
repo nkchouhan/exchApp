@@ -7,6 +7,35 @@ class Admin::HomeController < ApplicationController
     @admin_stats_bars = StatsBar.all
     @users = User.all
   end
+  
+  def role_type
+    @user = User.find(params[:user_id])
+  end
+  
+	def assign_role
+		if params[:role].present? && params[:user_id].present?
+			user = User.find(params[:user_id])
+			if params[:role] == "make_a_admin"
+				if user.has_role? :user
+					user.add_role :admin
+					user.remove_role :user
+					flash[:notice] = "Already Role assign as Admin"
+				elsif user.has_role? :admin
+			    flash[:notice] = "Role assigned as Admin"
+				end
+			elsif params[:role] == "make_a_user"
+				if user.has_role? :admin
+					user.add_role :user
+					user.remove_role :admin
+					flash[:notice] = "Role assigned as User"
+			  elsif user.has_role? :user
+					flash[:notice] = "Already Role assign as User"
+				end
+			end
+		end
+		redirect_to root_path
+  end
+  
   def btc
     @admin_stats_bars = StatsBar.all
     @coin_type = "btc" 

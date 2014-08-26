@@ -1,0 +1,9 @@
+<legend>Change Role of <%= @user.first_name.to_s.humanize %></legend>
+<% if current_user.has_role? :admin %>
+<div class="span3 left-div-role">
+	<legend>Assign Role</legend>
+	<%= link_to "<i class='#{(@user.has_role? :admin)  ? 'icon-ok' : ''}'></i>Assign Role as Admin".html_safe, admin_home_assign_role_path(:user_id => @user.id, :role => 'make_a_admin'), :class => 'btn btn-large btn-success' %><br />
+	<%= link_to "<i class='#{(@user.has_role? :user) ? 'icon-ok' : ''}'></i>Assign Role as User".html_safe, admin_home_assign_role_path(:user_id => @user.id, :role => 'make_a_user'), :class => 'btn btn-large  btn-danger' %>
+</div>
+<% end %>
+<div>
