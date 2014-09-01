@@ -8,3 +8,4 @@
 
 user = User.create(:first_name => 'Demo', :last_name => 'Admin', :email => 'admin_exch@mailinator.com', :password => 'exchApp@admin', :password_confirmation => 'exchApp@admin')
 user.add_role :admin
+user.confirm!
