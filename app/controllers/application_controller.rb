@@ -35,4 +35,10 @@ class ApplicationController < ActionController::Base
 	def after_update_path_for(resource)
 		root_path
 	end
+	def check_admin?
+	  unless current_user.has_role? :admin
+			flash[:notice] = "Invalid Aceess"
+			redirect_to home_dashboard_path
+		end
+	end
 end

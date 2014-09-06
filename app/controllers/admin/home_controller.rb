@@ -1,5 +1,5 @@
 class Admin::HomeController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :check_admin?
   
   def dashboard
     @admin_account_histories = AccountHistory.all

@@ -1,6 +1,6 @@
 class Admin::StatsBarsController < ApplicationController
   before_action :set_admin_stats_bar, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :check_admin?
   
   # GET /admin/stats_bars
   # GET /admin/stats_bars.json
