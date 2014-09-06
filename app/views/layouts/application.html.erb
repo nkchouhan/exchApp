@@ -42,10 +42,10 @@
   </li>
 <% else %>
   <li style="float:right; list-style-type: none; margin-top: 20px;">
-		<% unless request.url == new_user_session_url %>
+		<% unless request.url == new_user_session_url || !(request.url == root_url && current_user.blank?) %>
       <%= link_to('Login', new_user_session_path, :class => "btn btn-success")  %>
     <% end %>
-    <% unless request.url == new_user_registration_url %>
+    <% if request.url == root_url && current_user.blank? %>
       <%= link_to('Register', new_user_registration_path, :class => "btn btn-primary")  %>
     <% end %> 
   </li>

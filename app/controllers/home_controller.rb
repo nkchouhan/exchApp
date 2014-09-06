@@ -7,6 +7,10 @@ class HomeController < ApplicationController
     @stats_bars = StatsBar.all
     @admin_stats_bars = StatsBar.all
     @withdrawls = Withdrawl.all
+    respond_to do |format|
+      format.html
+      format.csv { render text: @account_histories.to_csv }
+    end
   end
   
   def index

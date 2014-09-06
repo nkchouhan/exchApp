@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822044308) do
+ActiveRecord::Schema.define(version: 20140906065540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20140822044308) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "deposits", force: true do |t|
+    t.string   "coin"
+    t.string   "coin_address"
+    t.integer  "user_id"
+    t.datetime "add_pull_at"
+    t.boolean  "status"
+    t.integer  "withdrawl_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "orders", force: true do |t|
@@ -116,6 +127,7 @@ ActiveRecord::Schema.define(version: 20140822044308) do
     t.string   "confirmed_token"
     t.datetime "confirmation_date"
     t.integer  "verified_count_time", default: 1
+    t.boolean  "is_token_used",       default: false
   end
 
 end

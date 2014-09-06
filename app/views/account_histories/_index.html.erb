@@ -1,4 +1,8 @@
 <h2>Account Histories</h2>
+<p>
+  Download:
+  <%= link_to "CSV", home_dashboard_path(format: "csv") %>
+</p>
 
 <table class="table table-striped">
   <thead>
@@ -25,3 +29,4 @@
     <% end %>
   </tbody>
 </table>
+

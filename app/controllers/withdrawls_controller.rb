@@ -4,7 +4,7 @@ class WithdrawlsController < ApplicationController
   # GET /withdrawls
   # GET /withdrawls.json
   def index
-    @withdrawls = Withdrawl.all
+    @withdrawls = current_user.withdrawls
   end
 
   # GET /withdrawls/1
@@ -74,14 +74,24 @@ class WithdrawlsController < ApplicationController
   def deposit
     @coin_address  = ""
 		unless params[:coin].blank?
-			withdrawl = current_user.withdrawls.where("coin =?", params[:coin]).first      
+			withdrawl = current_user.withdrawls.where("coin =? AND is_token_used =?", params[:coin], false).first      
 			if withdrawl.present?
-				@coin_address = withdrawl.coin_address 
+				@coin_address = withdrawl.coin_address
+				Deposit.create(:coin => params[:coin], :coin_address => @coin_address, :user_id => current_user.id, :add_pull_at => Time.now, :status => true, :withdrawl_id => withdrawl.id)
+				withdrawl.update_attribute :is_token_used, true
 				UserMailer.notify_deposit(withdrawl, params[:coin]).deliver
+				flash[:notice] = 'Deposit and Notify Deposit has been successfully.'
+			else
+			  flash[:notice] = 'Coin did not exist for coin address.'
 			end
+		else
+		  flash[:notice] = 'Coin did not exist.'
 		end
+		respond_to do |format|
+      format.html
+      format.csv { render text: current_user.get_today_deposit.to_csv }
+    end
 		
-		render "deposit", notice: 'Deposit successfully.'
   end
   
   private

@@ -1,5 +1,4 @@
 <legend> Deposit Section</legend>
-
 <%= form_tag("/withdrawls/deposit", method: "get") do %>
   <%= label_tag(:coin, "Find coin address for:") %>
   <%= select_tag "coin", options_for_select(COIN,params[:coin]) %>
@@ -11,4 +10,8 @@
 
 <h4> Get Coin Address </h4>
 <div id="coin_address"><%= @coin_address %></div>
- 
+<br />
+<p>
+  Download Today's coin addresses:
+  <%= link_to "CSV", deposit_withdrawls_path(format: "csv") %>
+</p>

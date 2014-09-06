@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   
   has_many :orders
   has_many :withdrawls
+  has_many :deposits
   has_many :account_histories
   
   after_create :assign_default_role, :set_random_account_number
@@ -55,5 +56,8 @@ class User < ActiveRecord::Base
   
   def set_random_account_number
     self.update_attributes(:account_no => Random.new.rand(1_000_000..10_000_000-1))
+  end
+  def get_today_deposit
+    self.deposits.where("created_at >= ? AND created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day) 
   end
 end

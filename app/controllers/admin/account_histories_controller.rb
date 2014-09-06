@@ -5,6 +5,10 @@ class Admin::AccountHistoriesController < ApplicationController
   # GET /admin/account_histories.json
   def index
     @admin_account_histories = AccountHistory.all
+    respond_to do |format|
+      format.html
+      format.csv { render text: @admin_account_histories.to_csv }
+    end
   end
 
   # GET /admin/account_histories/1
