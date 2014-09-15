@@ -7,7 +7,7 @@ gem 'rails', '4.0.1'
 gem 'pg'
 
 gem 'devise'
-gem 'devise_google_authenticator', '0.3.14'
+# gem 'devise_google_authenticator', '0.3.14'
 gem 'omniauth'
 gem 'omniauth-google-oauth2' 
 gem 'rolify'
