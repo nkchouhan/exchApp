@@ -49,7 +49,10 @@ end
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-
+group :production do
+  gem 'thin'
+  gem 'rails_12factor'
+end
 # Use debugger
 gem 'byebug'
 # gem 'debugger', group: [:development, :test]
