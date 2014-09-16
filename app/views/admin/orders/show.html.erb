@@ -21,8 +21,12 @@
 </p>
 
 <p>
-  <strong>Bid/Ask:</strong>
-  <%= @admin_order.bid_ask %>
+  <strong>ASK:</strong>
+  <%= @admin_order.ask %>
+</p>
+<p>
+  <strong>Bid:</strong>
+  <%= @admin_order.bid %>
 </p>
 
 <%= link_to 'Edit', edit_admin_order_path(@admin_order) %> |
