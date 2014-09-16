@@ -2,7 +2,7 @@
 
 <p>
   <strong>Ac date:</strong>
-  <%= @admin_account_history.ac_date.strftime('%m/%d/%Y') %>
+  <%= @admin_account_history.ac_date.strftime('%m/%d/%Y') unless @admin_account_history.ac_date.blank? %>
 </p>
 
 <p>

@@ -21,7 +21,7 @@
   <tbody>
     <% @admin_account_histories.each do |admin_account_history| %>
       <tr>
-        <td><%= admin_account_history.ac_date.strftime('%m/%d/%Y') %></td>
+        <td><%= admin_account_history.ac_date.strftime('%m/%d/%Y')  unless admin_account_history.ac_date.blank? %></td>
         <td><%= admin_account_history.btc %></td>
         <td><%= admin_account_history.doge %></td>
         <td><%= admin_account_history.gcs %></td>

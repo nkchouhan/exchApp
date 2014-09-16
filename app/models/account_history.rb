@@ -15,7 +15,7 @@ class AccountHistory < ActiveRecord::Base
       csv << ['Account Date(MM/DD/YYYY)','BTC Coin','DOGE Coin','GCS Coin','LTC Coin','Detail']
       all.each do |account_history|
         #csv << account_history.attributes.values_at('id','ac_date','btc','doge','gcs','ltc','details')
-        csv << [account_history.ac_date.strftime('%m/%d/%Y'),account_history.btc.to_i,account_history.doge.to_i,account_history.gcs.to_i,account_history.ltc.to_i,account_history.details]
+        csv << [account_history.ac_date.strftime('%m/%d/%Y'),account_history.btc.to_i,account_history.doge.to_i,account_history.gcs.to_i,account_history.ltc.to_i,account_history.details] unless account_history.ac_date.blank?
       end
     end
   end
