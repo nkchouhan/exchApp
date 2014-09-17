@@ -69,22 +69,21 @@
 		var data = new google.visualization.DataTable();
 		data.addColumn('datetime', 'Date');
 		data.addColumn('number', 'Last');
-		data.addColumn('number', 'Vol');
 		data.addRows([
 			<% if coin_type.blank? %>
 				<% @admin_stats_bars.each_with_index do |asb, index|%>
 					<% if index == @admin_stats_bars.count - 1 %>
-						[new Date(<%= asb.created_at.strftime("%Y, %m, %d, %H, %M, %S") %>), <%= asb.last.to_i %>, <%= asb.vol.to_i %>]
+						[new Date(<%= asb.created_at.strftime("%Y, %m, %d, %H, %M, %S") %>), <%= asb.last.to_i %>]
 					<% else %>
-					[new Date(<%= asb.created_at.strftime("%Y, %m, %d, %H, %M, %S") %>), <%= asb.last.to_i %>, <%= asb.vol.to_i %>],
+					[new Date(<%= asb.created_at.strftime("%Y, %m, %d, %H, %M, %S") %>), <%= asb.last.to_i %>],
 					<% end %>
 				<% end %>
 			<% else %>
 			  <% admin_stats_bars.each_with_index do |asb, index|%>
 					<% if index == @admin_stats_bars.count - 1 %>
-						[new Date(<%= asb.created_at.strftime("%Y, %m, %d, %H, %M, %S") %>), <%= asb.last.to_i %>, <%= asb.vol.to_i %>]
+						[new Date(<%= asb.created_at.strftime("%Y, %m, %d, %H, %M, %S") %>), <%= asb.last.to_i %>]
 					<% else %>
-					[new Date(<%= asb.created_at.strftime("%Y, %m, %d, %H, %M, %S") %>), <%= asb.last.to_i %>, <%= asb.vol.to_i %>],
+					[new Date(<%= asb.created_at.strftime("%Y, %m, %d, %H, %M, %S") %>), <%= asb.last.to_i %>],
 					<% end %>
 			 <% end %>
 		 <% end %>

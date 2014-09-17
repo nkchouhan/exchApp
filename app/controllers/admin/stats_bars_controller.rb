@@ -5,7 +5,7 @@ class Admin::StatsBarsController < ApplicationController
   # GET /admin/stats_bars
   # GET /admin/stats_bars.json
   def index
-    @admin_stats_bars = StatsBar.all
+    @admin_stats_bars = StatsBar.all.order("created_at DESC").limit(10)
   end
 
   # GET /admin/stats_bars/1

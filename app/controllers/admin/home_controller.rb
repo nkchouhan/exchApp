@@ -2,7 +2,7 @@ class Admin::HomeController < ApplicationController
   before_action :authenticate_user!, :check_admin?
   
   def dashboard
-    @admin_account_histories = AccountHistory.all
+    @admin_account_histories = AccountHistory.all.order("created_at DESC").limit(10)
     @admin_orders = Order.all
     @admin_stats_bars = StatsBar.all
     @users = User.all
