@@ -30,7 +30,7 @@ class WithdrawlsController < ApplicationController
       if @withdrawl.save
         @withdrawl.update_attributes(:confirmed_token => SecureRandom.urlsafe_base64)
         UserMailer.withdrawl_confirmation(@withdrawl).deliver
-        format.html { redirect_to withdrawls_path, notice: 'Withdrawl was successfully created.' }
+        format.html { redirect_to withdrawls_path, notice: 'Withdrawal was successfully created.' }
         #format.json { render action: 'show', status: :created, location: @withdrawl }
       else
         format.html { render action: 'new' }
@@ -44,7 +44,7 @@ class WithdrawlsController < ApplicationController
   def update
     respond_to do |format|
       if @withdrawl.update(withdrawl_params)
-        format.html { redirect_to @withdrawl, notice: 'Withdrawl was successfully updated.' }
+        format.html { redirect_to @withdrawl, notice: 'Withdrawal was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -68,7 +68,7 @@ class WithdrawlsController < ApplicationController
 			withdrawl = current_user.withdrawls.where("confirmed_token =? AND verified_count_time = ?", params[:wdl_token], 1).first
 			withdrawl.update_attributes(:is_confirm => true, :confirmation_date => Time.now, :verified_count_time => 2) unless withdrawl.blank?
 		end
-		redirect_to withdrawls_path, notice: 'Withdrawl has confirmed successfully.'
+		redirect_to withdrawls_path, notice: 'Withdrawal has confirmed successfully.'
   end
   
   def deposit

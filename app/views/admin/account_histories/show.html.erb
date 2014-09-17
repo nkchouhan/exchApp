@@ -31,4 +31,9 @@
 </p>
 
 <%= link_to 'Edit', edit_admin_account_history_path(@admin_account_history) %> |
-<%= link_to 'Back', admin_account_histories_path %>
+<%= link_to 'Back', 'javascript:void(0);', :class => 'btn btn-info', :id => 'back_histories' %>
+<script>
+	$(document).on('click', '#back_histories', function(){
+		window.location.href =  '/admin/histories';
+	}); 
+</script>

@@ -1,3 +1,8 @@
 <%= render 'form' %>
 
-<%= link_to 'Back', admin_stats_bars_path, :class => 'btn btn-info' %>
+<%= link_to 'Back', 'javascript:void(0);', :class => 'btn btn-info', :id => 'back_stats' %>
+<script>
+	$(document).on('click', '#back_stats', function(){
+		window.location.href =  '/admin/stats_bars';
+	}); 
+</script>

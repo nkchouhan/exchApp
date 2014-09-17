@@ -29,5 +29,10 @@
   <%= @admin_order.bid %>
 </p>
 
-<%#= link_to 'Edit', edit_admin_order_path(@admin_order) %> 
-<%#= link_to 'Back', admin_orders_path %>
+<%= link_to 'Edit', edit_admin_order_path(@admin_order) %> 
+<%= link_to 'Back', 'javascript:void(0);', :class => 'btn btn-info', :id => 'back_orders' %>
+<script>
+	$(document).on('click', '#back_orders', function(){
+		window.location.href =  '/admin/orders';
+	}); 
+</script>

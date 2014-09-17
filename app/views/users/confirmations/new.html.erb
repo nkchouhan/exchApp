@@ -1,12 +1,15 @@
-<h2>Resend confirmation instructions</h2>
+<div class="span3 left-div"></div>
+<div class="user-sign-in">
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+	<legend>Resend confirmation instructions</legend>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+	<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+		<%= devise_error_messages! %>
 
-  <div><%= f.submit "Resend confirmation instructions" %></div>
-<% end %>
+		<div><%= f.email_field :email, autofocus: true, :placeholder => 'Enter Email Address', :class=>"input-xlarge" %></div>
+		<div><%= f.submit "Resend confirmation instructions", :class => 'btn btn-primary', :style=>"width: 50%;" %></div>
+	<% end %>
 
-<%= render "users/shared/links" %>
+	<legend class="bottom-legend"></legend>
+	<%= render "users/shared/links" %>
+</div>

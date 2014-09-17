@@ -1,6 +1,6 @@
 <%= form_for(@withdrawl) do |f| %>
   <fieldset>
-    <legend><%= @withdrawl.new_record? ? "New Withdrawl" : "Edit Withdrawl"%></legend>
+    <legend><%= @withdrawl.new_record? ? "New Withdrawal" : "Edit Withdrawal"%></legend>
 		<% if @withdrawl.errors.any? %>
 			<div id="error_explanation">
 				<h2><%= pluralize(@withdrawl.errors.count, "error") %> prohibited this withdrawl from being saved:</h2>
@@ -16,7 +16,8 @@
 		<div class="control-group">
 			<%= f.label :account_number, :class => "control-label" %>
 			<div class="controls">
-				<%= f.text_field :account_number, :class => "input-xlarge" %>
+				<%= debugger %>
+				<%= f.text_field :account_number, :value => current_user.present? ? current_user.account_no : '', :class => "input-xlarge", :disabled => "disabled" %>
 			</div>
 		</div>
 		<div class="control-group">
