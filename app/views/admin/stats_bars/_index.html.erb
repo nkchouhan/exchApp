@@ -89,7 +89,7 @@
 		 <% end %>
 		]);
 		var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('<%= coin_type %>_chart'));
-		chart.draw(data, {displayAnnotations: true});
+		chart.draw(data, {displayAnnotations: true, dateFormat: 'HH:mm MMMM dd, yyyy', displayAnnotations: true});
 	}
 </script>
 
